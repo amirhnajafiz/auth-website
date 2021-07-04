@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 views = Blueprint('views', __name__)  # Creating a blueprint instance
 
@@ -7,5 +7,4 @@ views = Blueprint('views', __name__)  # Creating a blueprint instance
 # Create a view or blueprint
 @views.route('/')
 def home():  # Creating the home end-point
-    return "<h1>Test</h1>"
-    
+    return render_template("home.html")
