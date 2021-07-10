@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from os import path
 
 
 db = SQLAlchemy()  # Creating an instanse of SQLAlchemy object for database
@@ -20,4 +21,16 @@ def create_app():  # Creating an flask app and setting the secret key
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
 
+    # We just want to import the classes so we have them defined
+    from .models import User, Note
+
+    create_database(app)  # Creating the website database
+
+
     return app
+
+
+def create_database(app):  # Check if database exists or not and then it creates it if it dosen't exist
+    if not path.exists('website/' + DB_NAME):
+        db.create_all(app=app)
+        print('Created Database!')

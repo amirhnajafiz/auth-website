@@ -1,4 +1,3 @@
-from datetime import timezone
 from . import db  # From this package (__int__) import database
 from flask_login import UserMixin 
 from sqlalchemy.sql import func
