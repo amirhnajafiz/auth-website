@@ -1,7 +1,8 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+
+db = SQLAlchemy()  # Creating an instanse of SQLAlchemy object for database
 DB_NAME = 'database.db'
 
 
