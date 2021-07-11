@@ -26,7 +26,7 @@ def login():  # The login route
         else:
             flash('Email does not exists.', category='error')
 
-    return render_template("login.html")
+    return render_template("login.html", user=current_user)
 
 
 @auth.route('/logout')
@@ -66,4 +66,4 @@ def sign_up():  # Registering applications
             return redirect(url_for('views.home'))  # Redirecting to home page
 
 
-    return render_template("sign_up.html")
+    return render_template("sign_up.html", user=current_user)
