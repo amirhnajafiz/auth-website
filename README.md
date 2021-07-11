@@ -42,3 +42,14 @@ If everything is set correctly, you will get something like this:
  * Debugger PIN: 554-480-689
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
  ```
+
+## Project
+The project uses MVC model to create a website that users can add todo tasks for
+themselves.
+
+Each user has a task that has due date and user can click to remove them or add new ones.
+
+For front-end I used Bootstrap4 and jinga.
+
+# Course
+Visit the youtube video from [here](https://youtu.be/dam0GPOAvVI)

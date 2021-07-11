@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1 align="center">Notes</h1>
+    <h1 align="center">Tasks</h1>
     <ul class="list-group list-group-flush" id="notes">
         {% for note in user.notes %}
         <li class="list-group-item bg-success text-light mb-3 rounded">
@@ -11,19 +11,26 @@
                 {{ note.data }}
             </div>
             <div>
-                {{ "Created Time: " }}{{ note.date }}
+                {{ "Created Time: " }}{{ note.date }}{{" | Due Time: "}}{{ note.due_date }}
                 <button type="button" class="close" onClick="deleteNote({{ note.id }})">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            {% if current_time > note.due_date  %}
+                <div class="bg-danger rounded text-light mt-2 p-2">
+                    {{ "Your task is now past of its due time!" }}
+                </div>
+            {% endif %}
         </li>
         {% endfor %}
     </ul>
     <form method="POST">
         <textarea name="note" id="note" class="form-control"></textarea>
+        <label for="taskdate">Due Date</label>
+        <input type="datetime-local" id="taskdate" name="taskdate" class="form-control" />
         <br />
         <div align="center">
-            <button type="submit" class="btn btn-primary">Add Note</button>
+            <button type="submit" class="btn btn-primary">Add New Task</button>
         </div>
     </form>
 {% endblock %}
