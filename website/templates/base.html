@@ -12,6 +12,18 @@
         integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous" />
 
     <title>{% block title %}Flask-Web{% endblock %}</title>
+
+    <style>
+        .bg {
+            background-image: url("../static/assets/logo.png");
+            background-color: #cccccc;
+            height: 500px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+    </style>
 </head>
 
 <body>
@@ -59,7 +71,7 @@
     {% endif %}
     {% endwith %}
 
-    <div class="container">
+    <div class="container bg">
         {% block content %}
         {% endblock %}
     </div>
