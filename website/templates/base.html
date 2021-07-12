@@ -36,6 +36,9 @@
 
         <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav">
+                <a class="navbar-brand" href="#">
+                    <img src="../static/assets/logo.svg" width="30" height="30" alt="logo" />
+                </a>
                 {% if user.is_authenticated %}
                 <a class="nav-item nav-link" id="home" href="/">Home</a>
                 <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
@@ -73,7 +76,7 @@
     {% endwith %}
 
     <div class="container-fluid bg">
-        <div class="container w-50 mt-5">
+        <div class="container w-50 pt-5">
             {% block content %}
             {% endblock %}
         </div>
