@@ -15,12 +15,13 @@
 
     <style>
         .bg {
-            background-image: url("../static/assets/logo.png");
+            background-image: url("../static/assets/logo.svg");
             background-color: #cccccc;
-            height: 500px;
+            height: 690px;
             background-position: center;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: contain;
+            overflow: hidden;
             position: relative;
         }
     </style>
@@ -71,9 +72,11 @@
     {% endif %}
     {% endwith %}
 
-    <div class="container bg">
-        {% block content %}
-        {% endblock %}
+    <div class="container-fluid bg">
+        <div class="container w-50 mt-5">
+            {% block content %}
+            {% endblock %}
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
