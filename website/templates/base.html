@@ -21,8 +21,8 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
-            overflow: hidden;
-            position: relative;
+            overflow: auto;
+            position: fixed;
         }
     </style>
 </head>
@@ -35,19 +35,23 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbar">
-            <div class="navbar-nav">
-                <a class="navbar-brand" href="#">
-                    <img src="../static/assets/logo.svg" width="30" height="30" alt="logo" />
-                </a>
+            <div class="navbar-nav w-100">
+                <div class="nav-item navbar-brand">
+                        <img src="../static/assets/SLogo.png" width="30" height="30" alt="logo" />
+                </div>
                 {% if user.is_authenticated %}
-                <a class="nav-item nav-link" id="home" href="/">Home</a>
-                <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
-                <span class="nav-item nav-link rounded bg-primary text-light">
+                <div class="nav-item navbar-nav">
+                    <a class="nav-link" id="home" href="/">Home</a>
+                    <a class="nav-link" id="logout" href="/logout">Logout</a>
+                </div>
+                <div class="nav-item nav-link rounded bg-primary text-light navbar-nav ml-auto">
                     {{ "Welcome " }}{{ user.first_name }}
-                </span>
+                </div>
                 {% else %}
-                <a class="nav-item nav-link" id="login" href="/login">Login</a>
-                <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
+                <div class="nav-item navbar-nav">
+                    <a class="nav-link" id="login" href="/login">Login</a>
+                    <a class="nav-link" id="signUp" href="/sign-up">Sign Up</a>
+                </div>
                 {% endif %}
             </div>
         </div>
@@ -57,14 +61,14 @@
     {% if messages %}
     {% for category, message in messages %}
     {% if category == 'error' %}
-    <div class="alert alert-danger alert-dismissable fade show" role="alert">
+    <div class="alert alert-danger alert-dismissable fade show m-0" role="alert">
         {{ message }}
         <button type="button" class="close" data-dismiss="alert">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     {% else %}
-    <div class="alert alert-danger alert-dismissable fade show" role="alert">
+    <div class="alert alert-danger alert-dismissable fade show m-0" role="alert">
         {{ message }}
         <button type="button" class="close" data-dismiss="alert">
             <span aria-hidden="true">&times;</span>
