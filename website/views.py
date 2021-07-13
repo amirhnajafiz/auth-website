@@ -31,9 +31,9 @@ def home():
         taskdate = datetime.strptime(taskdate, '%Y-%m-%dT%H:%M')
 
         if len(note) < 1:  # Content validation
-            flash(message='Note is too short!', category='error')
+            flash(message='Note is too short!', category='danger')
         elif taskdate < datetime.now():
-            flash(message='Due date is not valid.', category='error')
+            flash(message='Due date is not valid.', category='danger')
         else:
             newNote = Note(data=note, due_date=taskdate, user_id=current_user.id)
             db.session.add(newNote)

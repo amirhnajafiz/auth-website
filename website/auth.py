@@ -40,7 +40,7 @@ def login():
             else:
                 flash(message='Incorrect password, try again.', category='warning')
         else:
-            flash(message='Email does not exists.', category='error')
+            flash(message='Email does not exists.', category='danger')
 
     return render_template("login.html", user=current_user)
 
@@ -74,15 +74,15 @@ def sign_up():
 
         # Inputs validation
         if user:  # Check for duplicate emails
-            flash(message='Email already exists.', category='error')
+            flash(message='Email already exists.', category='danger')
         elif len(email) < 4:  # Email validation
-            flash(message='Email must be greater than 4 characters.', category='error')
+            flash(message='Email must be greater than 4 characters.', category='danger')
         elif len(firstname) < 2:  # First name limit
-            flash(message='First name must be greater than 1 characters.', category='error')
+            flash(message='First name must be greater than 1 characters.', category='danger')
         elif password1 != password2:  # Password confirm
-            flash(message='Passwords don\'t match.', category='error')
+            flash(message='Passwords don\'t match.', category='warning')
         elif len(password1) < 7:  # Password limit
-            flash(message='Password must be at least 7 characters.', category='error')
+            flash(message='Password must be at least 7 characters.', category='danger')
         else:  # Creating a new user
             newUser = User(email=email, first_name=firstname, password=generate_password_hash(password1, method='sha256'))
             db.session.add(newUser)  # Commit the new user to database
