@@ -1,6 +1,6 @@
 # Website demo
 
-Here are some pictures that shows the result of our flask to-do application.
+Here are some pictures that show the result of our flask to-do application.
 
 ### Login page
 <img src="./1.png" width="700" />
