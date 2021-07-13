@@ -1,5 +1,9 @@
 # Flasking
 
+<p align="center">
+	<img src="./website/static/assets/logo.svg" width="800" />
+</p>
+
 Implement a full website with Python Flask framework.
 
 This is a course that I watched from youtube, about creating a website with python Flask framework.
@@ -50,6 +54,9 @@ themselves.
 Each user has a task that has due date and user can click to remove them or add new ones.
 
 For front-end I used Bootstrap4 and jinga.
+
+## Result
+You can see the project output in <a href="./demo/DEMO.md">Here</a>.
 
 # Course
 Visit the youtube video from [here](https://youtu.be/dam0GPOAvVI)
