@@ -10,3 +10,7 @@ function deleteNote(noteId) {
 function editFilter(filter) {
     window.location.href = '/?key=' + filter;
 }
+
+function moveToRegister() {
+    window.location.href = "/sign-up";
+}

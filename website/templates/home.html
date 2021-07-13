@@ -20,7 +20,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            {% if current_time < note.due_date  %}
+            {% if current_time > note.due_date  %}
                 <div class="bg-danger rounded text-light p-2">
                     {{ "Your task is now past of its due time!" }}
                 </div>
