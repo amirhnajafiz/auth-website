@@ -1,14 +1,36 @@
+"""Website package
+
+Website package defines all of the instances that we need for
+our website.
+
+The first initializing and database instansiate handles here.
+
+"""
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
 
 
+
 db = SQLAlchemy()  # Creating an instanse of SQLAlchemy object for database
 DB_NAME = 'database.db'
 
 
-def create_app():  # Creating an flask app and setting the secret key
+def create_app():
+    """Project initialize
+
+    This function creates an app for our project and
+    then configs the Secret key for sessions hashing and
+    it also configs the Database of our application.
+
+    After that it sets our blueprints and then registers them.
+
+    In the end it creates the database file and sets the configs for
+    database file with application.
+
+    """
+
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'iqbnddpoeallwennvcpwee'  # Secret key is for sessions hashing
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'  # Store the database into a SQLite file
@@ -34,7 +56,6 @@ def create_app():  # Creating an flask app and setting the secret key
     @login_manager.user_loader
     def load_user(id):  # This tells flask how to get a user
         return User.query.get(int(id))
-
 
     return app
 

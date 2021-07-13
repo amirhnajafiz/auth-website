@@ -1,16 +1,32 @@
+"""auth file
+
+The endpoints of Authorizing in our website is being handle here.
+
+This is the Auth blueprints.
+Registeration and logging in, amoung of logging out.
+Hashings and password validation also is handling here.
+"""
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User 
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 
-auth = Blueprint('auth', __name__)  # Creating a blueprint instance
 
+
+auth = Blueprint('auth', __name__)  # Creating a blueprint instance
 
 
 # Blueprints and endpoints of the application
 @auth.route('/login', methods=['GET', 'POST'])
-def login():  # The login route
+def login():
+    """The login route
+
+    The login function gets the email and password and checks
+    for user in database and then validates the information.
+
+    It return error messages or redirects user to home page.
+    """
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -31,13 +47,23 @@ def login():  # The login route
 
 @auth.route('/logout')
 @login_required  # Works if user is login
-def logout():  # Logging out function
+def logout(): 
+    """Logging out function
+
+    Removes the user from session and redirects to auth.login endpoint.
+    """
     logout_user()
     return redirect(url_for('auth.login'))
 
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
-def sign_up():  # Registering applications
+def sign_up():   
+    """Registering applications
+
+    The endpoint of registration, where it gets the user data
+    validates them, and if it was all done correctly, it addes a
+    new user to database and redirects to Views.home page.
+    """
     if request.method == 'POST':
         email = request.form.get('email')
         firstname = request.form.get('firstname')
@@ -64,6 +90,5 @@ def sign_up():  # Registering applications
             flash('Account created!', category='success')
             login_user(newUser, remember=True)
             return redirect(url_for('views.home'))  # Redirecting to home page
-
 
     return render_template("sign_up.html", user=current_user)

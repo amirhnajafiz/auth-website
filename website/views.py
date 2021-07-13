@@ -1,3 +1,9 @@
+"""views file
+
+The endpoints of pages in our website is being handle here.
+
+Basically it has the home route and the delete-note endpoint.
+"""
 from datetime import datetime
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask.json import jsonify
@@ -6,14 +12,19 @@ from .models import Note
 from . import db
 import json
 
-views = Blueprint('views', __name__)  # Creating a blueprint instance
 
+
+views = Blueprint('views', __name__)  # Creating a blueprint instance
 
 
 # Create a view or blueprint
 @views.route('/', methods=['GET', 'POST'])
 @login_required  # User can only access the home page if it is logged in
-def home():  # Creating the home end-point
+def home(): 
+    """Creating the home end-point
+
+    The home function which renders the home page for user.
+    """
     if request.method == 'POST':
         note = request.form.get('note')
         taskdate = request.form.get('taskdate')
@@ -32,6 +43,13 @@ def home():  # Creating the home end-point
 
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
+    """
+
+    Delete note is a simple function that removes the user
+    note and return nothing.
+
+    This is a one thing doing function.
+    """
     note = json.loads(request.data)
     noteId = note['noteId']
     note = Note.query.get(noteId)
