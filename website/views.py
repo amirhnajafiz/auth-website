@@ -40,13 +40,11 @@ def home():
             db.session.commit()
             flash('Note added!', category='success')
     
-    filter_key = "due_date"
+    filter_key = "id"
 
     if request.method == 'GET':
-        if request.data:
-            data = json.loads(request.data)
-            if 'key' in data:
-                filter_key = data['key']
+        if 'key' in request.args:
+            filter_key = request.args.get('key')
 
     return render_template("home.html", user=current_user, current_time=datetime.now(), filter_key=filter_key)  # Reference to current user in home page
 

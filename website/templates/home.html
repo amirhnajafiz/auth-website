@@ -4,6 +4,10 @@
 
 {% block content %}
     <h1 align="center" class="text-light mb-3">Tasks</h1>
+    <div>
+        <button class="btn btn-warning" onClick="editFilter('due_date')">By Due Date</button>
+        <button class="btn btn-warning" onClick="editFilter('date')">By Created Date</button>
+    </div>
     <ul class="list-group list-group-flush" id="notes">
         {% for note in user.notes|sort(attribute=filter_key) %}
         <li class="list-group-item bg-success text-light mb-3 p-0 rounded">
