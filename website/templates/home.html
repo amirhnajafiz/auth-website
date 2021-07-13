@@ -5,7 +5,7 @@
 {% block content %}
     <h1 align="center" class="text-light mb-3">Tasks</h1>
     <ul class="list-group list-group-flush" id="notes">
-        {% for note in user.notes %}
+        {% for note in user.notes|sort(attribute=filter_key) %}
         <li class="list-group-item bg-success text-light mb-3 p-0 rounded">
             <div class="pb-4 pr-2 pl-2 pt-2">
                 {{ note.data }}

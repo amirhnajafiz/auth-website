@@ -39,7 +39,16 @@ def home():
             db.session.add(newNote)
             db.session.commit()
             flash('Note added!', category='success')
-    return render_template("home.html", user=current_user, current_time=datetime.now())  # Reference to current user in home page
+    
+    filter_key = "due_date"
+
+    if request.method == 'GET':
+        if request.data:
+            data = json.loads(request.data)
+            if 'key' in data:
+                filter_key = data['key']
+
+    return render_template("home.html", user=current_user, current_time=datetime.now(), filter_key=filter_key)  # Reference to current user in home page
 
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
