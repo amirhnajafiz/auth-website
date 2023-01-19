@@ -5,9 +5,8 @@
 
 <br />
 
-## Tools we need to setup the project
-
 First things first, install flask framework:
+
 ```shell
 pip install flask
 ```
